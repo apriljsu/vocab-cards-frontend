@@ -3,8 +3,9 @@ import './App.css';
 import React, {useState, useEffect} from 'react';
 import {Routes, Route, useNavigate, Navigate} from 'react-router-dom';
 import VocabContainer from './components/VocabContainer';
-import LoginUser from './components/LoginUser'
-import RegisterUser from './components/RegisterUser'
+import LoginUser from './components/LoginUser';
+import RegisterUser from './components/RegisterUser';
+import NewVocabForm from './components/NewVocabForm';
 
 let baseUrl = 'http://localhost:8000/api/v1'
 
@@ -97,11 +98,37 @@ function App() {
     getVocabs()
   }, [])
 
+  const newVocab = (vocab) =>{
+    console.log('test')
+    fetch(baseUrl + '/vocab', {
+      credentials: 'include',
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        vocab_chinese: vocab.vocabChinese,
+        vocab_english: vocab.vocabEnglish,
+        category: vocab.category,
+        set: vocab.set
+      })
+    })
+    .then(res => {
+      if(res.status === 200) {
+        return res.json()
+      } else {
+        return []
+      }
+    })
+    .then(data =>{
+      getVocabs()
+    })
+  }
+
   return (
     <Routes>
       <Route path='/vocabs' element={<VocabContainer vocabs={vocabs} />} />
       <Route path='/login' element={<LoginUser loginUser={loginUser} />} />
       <Route path='/register' element={<RegisterUser register={register} />} />
+      <Route path='/new' element={<NewVocabForm newVocab={newVocab} />} />
     </Routes>
     
   );
