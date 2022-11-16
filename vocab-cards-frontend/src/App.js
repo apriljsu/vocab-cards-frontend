@@ -6,6 +6,8 @@ import VocabContainer from './components/VocabContainer';
 import LoginUser from './components/LoginUser';
 import RegisterUser from './components/RegisterUser';
 import NewVocabForm from './components/NewVocabForm';
+import HomePage from './components/HomePage';
+import NavBar from './components/NavBar';
 
 let baseUrl = 'http://localhost:8000/api/v1'
 
@@ -99,7 +101,7 @@ function App() {
   }, [])
 
   const newVocab = (vocab) =>{
-    console.log('test')
+    console.log('hit new vocab')
     fetch(baseUrl + '/vocab', {
       credentials: 'include',
       method: 'POST',
@@ -123,14 +125,37 @@ function App() {
     })
   }
 
+  const deleteVocab = async(id) =>{
+    console.log('hit delete vocab')
+    fetch(baseUrl + `/vocab/${id}`, {
+      credentials: 'include',
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json'}
+    })
+    .then(res => {
+      if(res.status === 200) {
+        return res.json()
+      } else {
+        return []
+      }
+    })
+    .then (data =>{
+      getVocabs()
+    })
+  }
+  
   return (
+  <>
+    <NavBar />
     <Routes>
       <Route path='/vocabs' element={<VocabContainer vocabs={vocabs} />} />
       <Route path='/login' element={<LoginUser loginUser={loginUser} />} />
       <Route path='/register' element={<RegisterUser register={register} />} />
       <Route path='/new' element={<NewVocabForm newVocab={newVocab} />} />
+      <Route path='/' element={<HomePage />} />
+
     </Routes>
-    
+  </>
   );
 }
 

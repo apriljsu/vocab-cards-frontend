@@ -1,6 +1,7 @@
 import {useNavigate} from 'react-router-dom';
 
 const VocabContainer = (props) =>{
+    console.log(props)
     console.log(props.vocabs)
     const navigate = useNavigate()
     return(
