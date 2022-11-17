@@ -17,10 +17,14 @@ function App() {
   const navigate = useNavigate()
   
   const getVocabs = () =>{
-    fetch(baseUrl + '/vocab', {
-      credentials: "include"
+    fetch(baseUrl + '/vocab/', {
+      credentials: "include",
+      headers: {
+        'Content-Type': 'application/json'
+      }
     })
     .then(res => {
+      console.log('hit vocab')
       if(res.status === 200){
         return res.json()
       } else {
@@ -94,37 +98,6 @@ function App() {
     }
   }
 
-
-
-  useEffect(()=>{
-    getVocabs()
-  }, [])
-
-  const newVocab = (vocab) =>{
-    console.log('hit new vocab')
-    fetch(baseUrl + '/vocab', {
-      credentials: 'include',
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        vocab_chinese: vocab.vocabChinese,
-        vocab_english: vocab.vocabEnglish,
-        category: vocab.category,
-        set: vocab.set
-      })
-    })
-    .then(res => {
-      if(res.status === 200) {
-        return res.json()
-      } else {
-        return []
-      }
-    })
-    .then(data =>{
-      getVocabs()
-    })
-  }
-
   const deleteVocab = async(id) =>{
     console.log('hit delete vocab')
     fetch(baseUrl + `/vocab/${id}`, {
@@ -143,7 +116,7 @@ function App() {
       getVocabs()
     })
   }
-  
+
   return (
   <>
     <NavBar />
@@ -151,7 +124,7 @@ function App() {
       <Route path='/vocabs' element={<VocabContainer vocabs={vocabs} />} />
       <Route path='/login' element={<LoginUser loginUser={loginUser} />} />
       <Route path='/register' element={<RegisterUser register={register} />} />
-      <Route path='/new' element={<NewVocabForm newVocab={newVocab} />} />
+      <Route path='/new' element={<NewVocabForm />} />
       <Route path='/' element={<HomePage />} />
 
     </Routes>
