@@ -7,7 +7,7 @@ export default function NavBar() {
         <nav>
           <Link to="/">HOME</Link>
           <br/>
-          <NavLink to="vocabs" >MAIN</NavLink>
+          <NavLink to="main" >MAIN</NavLink>
           <br/>         
           <NavLink to="register" >REGISTER</NavLink>
           <br/>

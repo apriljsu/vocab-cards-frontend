@@ -2,12 +2,13 @@ import logo from './logo.svg';
 import './App.css';
 import React, {useState, useEffect} from 'react';
 import {Routes, Route, useNavigate, Navigate} from 'react-router-dom';
-import VocabContainer from './components/VocabContainer';
+import AnimalsPage from './components/AnimalsPage';
 import LoginUser from './components/LoginUser';
 import RegisterUser from './components/RegisterUser';
 import NewVocabForm from './components/NewVocabForm';
 import HomePage from './components/HomePage';
 import NavBar from './components/NavBar';
+import MainPage from './components/MainPage';
 
 let baseUrl = 'http://localhost:8000/api/v1'
 
@@ -58,7 +59,7 @@ function App() {
       console.log('BODY:', response.body)
       if(response.status === 200) {
         getVocabs()
-        navigate('vocabs')
+        navigate('main')
       }
     }
     catch (err) {
@@ -87,7 +88,8 @@ function App() {
       })
       console.log(response)
       console.log('BODY:', response.body)
-      if(response.status === 201) {
+      console.log(response.status)
+      if(response.status === 200) {
         console.log('register successfully')
         getVocabs()
         navigate('login')
@@ -121,7 +123,8 @@ function App() {
   <>
     <NavBar />
     <Routes>
-      <Route path='/vocabs' element={<VocabContainer vocabs={vocabs} />} />
+      <Route path='/animals' element={<AnimalsPage vocabs={vocabs} />} />
+      <Route path='/main' element={<MainPage />} />
       <Route path='/login' element={<LoginUser loginUser={loginUser} />} />
       <Route path='/register' element={<RegisterUser register={register} />} />
       <Route path='/new' element={<NewVocabForm />} />

@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { Navigate } from 'react-router-dom';
 
 
 let baseUrl = 'http://localhost:8000/api/v1'
@@ -48,7 +49,7 @@ const NewVocabForm = () =>{
                 setChinese('')
                 setEnglish('')
                 setCategory('')
-                setSet('')                
+                setSet('')                              
               })
                      
     }
