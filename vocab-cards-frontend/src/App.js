@@ -25,15 +25,17 @@ function App() {
       }
     })
     .then(res => {
-      console.log('hit vocab')
+      // console.log('hit vocab')
       if(res.status === 200){
         return res.json()
       } else {
         return []
       }
     }).then(data => {
-      console.log(data.data)
+      
       setVocabs(data.data)
+      console.log(data.data)
+      
     })
   }
 
@@ -50,11 +52,11 @@ function App() {
       const response = await fetch(url, {
         method: 'POST',
         body: JSON.stringify(loginBody),
+        credentials: 'same-origin',
         headers: {
           'Content-Type': 'application/json'
-        },
-        credentials: 'include'
-      })
+        }
+        })
       console.log(response)
       console.log('BODY:', response.body)
       if(response.status === 200) {
@@ -119,6 +121,11 @@ function App() {
     })
   }
 
+  // useEffect(()=>{
+  //   getVocabs()
+  //   console.log(vocabs)
+  // },[])
+
   return (
   <>
     <NavBar />
@@ -127,7 +134,7 @@ function App() {
       <Route path='/main' element={<MainPage />} />
       <Route path='/login' element={<LoginUser loginUser={loginUser} />} />
       <Route path='/register' element={<RegisterUser register={register} />} />
-      <Route path='/new' element={<NewVocabForm />} />
+      <Route path='/new' element={<NewVocabForm getVocabs={getVocabs}/>} />
       <Route path='/' element={<HomePage />} />
 
     </Routes>

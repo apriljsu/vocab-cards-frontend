@@ -4,11 +4,11 @@ import { Navigate } from 'react-router-dom';
 
 let baseUrl = 'http://localhost:8000/api/v1'
 
-const NewVocabForm = () =>{
+const NewVocabForm = (props) =>{
     const [vocabChinese, setChinese] = useState('')
     const [vocabEnglish, setEnglish] = useState('')
     const [category, setCategory] = useState('')
-    const [languageMode, setLanguageMode] = useState(true)
+    const [english_to_chinese, setEnglishToChinese] = useState('True')
    
 
     const handleChineseChange = (e) =>{
@@ -33,7 +33,7 @@ const NewVocabForm = () =>{
                   vocab_chinese: vocabChinese,
                   vocab_english: vocabEnglish,
                   category: category,
-                  english_to_chinese: languageMode
+                  english_to_chinese: english_to_chinese
                 })
               })
               .then(res => {
@@ -47,6 +47,7 @@ const NewVocabForm = () =>{
                 setChinese('')
                 setEnglish('')
                 setCategory('')
+                props.getVocabs()
                                            
               })
                      
