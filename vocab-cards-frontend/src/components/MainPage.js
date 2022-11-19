@@ -7,8 +7,7 @@ export default function MainPage() {
             <h2>Category</h2>
             <Link to='/animals'>Animals</Link><br />
             <Link to='/greetings'>Greetings</Link>
-        </>
-       
+       </>
 
     )
 }

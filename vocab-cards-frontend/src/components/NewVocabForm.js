@@ -8,7 +8,7 @@ const NewVocabForm = () =>{
     const [vocabChinese, setChinese] = useState('')
     const [vocabEnglish, setEnglish] = useState('')
     const [category, setCategory] = useState('')
-    const [set, setSet] = useState('')
+    const [languageMode, setLanguageMode] = useState(true)
    
 
     const handleChineseChange = (e) =>{
@@ -21,9 +21,7 @@ const NewVocabForm = () =>{
     const handleCategoryChange = (e) =>{
         setCategory(e.target.value)
     }
-    const handleSetChange = (e) =>{
-        setSet(e.target.value)
-    }
+  
     
     const handleSubmit = (e) =>{
         e.preventDefault()
@@ -35,7 +33,7 @@ const NewVocabForm = () =>{
                   vocab_chinese: vocabChinese,
                   vocab_english: vocabEnglish,
                   category: category,
-                  set: set
+                  english_to_chinese: languageMode
                 })
               })
               .then(res => {
@@ -49,7 +47,7 @@ const NewVocabForm = () =>{
                 setChinese('')
                 setEnglish('')
                 setCategory('')
-                setSet('')                              
+                                           
               })
                      
     }
@@ -59,8 +57,7 @@ const NewVocabForm = () =>{
         <form onSubmit={handleSubmit}>
             <input type = 'text' id='vocabChinese' onChange={handleChineseChange} value={vocabChinese} placeholder='Chinese Vocab'></input>
             <input type = 'text' id='vocabEnglish' onChange={handleEnglishChange} value={vocabEnglish} placeholder='English Vocab'></input>
-            <input type = 'text' id='category' onChange={handleCategoryChange} value={category} placeholder='Category'></input>
-            <input type = 'number' id='set' onChange={handleSetChange} value={set} placeholder='Set'></input>
+            <input type = 'text' id='category' onChange={handleCategoryChange} value={category} placeholder='Category'></input>            
             <button type = 'submit' >Add New Vocab Card</button>    
         </form>
     )
