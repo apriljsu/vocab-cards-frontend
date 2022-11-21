@@ -21,6 +21,7 @@ function App() {
   const [vocabs, setVocabs]= useState([])
   const navigate = useNavigate()
   const [user, setUser] = useState()
+  const [userActive,setUserActive] = useState(false)
   
   const getVocabs = () =>{
     fetch(baseUrl + '/vocab/', {
@@ -66,6 +67,7 @@ function App() {
       console.log('BODY:', response.body)
       if(response.status === 200) {
         setUser(e.target.email.value)
+        setUserActive(true)
         getVocabs()
         navigate('main')
       }
@@ -123,14 +125,14 @@ function App() {
 
   return (
   <>
-    <NavBar logout={logout} user={user}/>
+    <NavBar logout={logout} userActive={userActive} user={user}/>
     <Routes>
-      <Route path='/animals' element={<AnimalsPage vocabs={vocabs} />} />
-      <Route path='/weather' element={<WeatherPage vocabs={vocabs} />} />
-      <Route path='/greeting' element={<GreetingPage vocabs={vocabs} />} />
-      <Route path='/transport' element={<TransportPage vocabs={vocabs} />} />
-      <Route path='/yourown' element={<YourOwnPage vocabs={vocabs} />} />
-      <Route path='/main' element={<MainPage />} />
+      <Route path='/animals' element={<AnimalsPage />} />
+      <Route path='/weather' element={<WeatherPage />} />
+      <Route path='/greeting' element={<GreetingPage />} />
+      <Route path='/transport' element={<TransportPage />} />
+      <Route path='/yourown' element={<YourOwnPage user={user}/>} />
+      <Route path='/main' element={<MainPage user={user}/>} />
       <Route path='/login' element={<LoginUser loginUser={loginUser} />} />
       <Route path='/register' element={<RegisterUser register={register} />} />
       <Route path='/new' element={<NewVocabForm getVocabs={getVocabs} user={user}/>} />

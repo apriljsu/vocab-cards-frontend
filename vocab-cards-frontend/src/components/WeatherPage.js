@@ -68,7 +68,7 @@ const WeatherPage = () =>{
         } else {
           return (
             <div key={vocab.id}>
-              <div>REMEMBER?</div>                               
+                                           
               <div>          
               {vocab.vocab_english}
               </div>

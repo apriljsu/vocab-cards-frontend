@@ -1,10 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 
-export default function MainPage() {
+export default function MainPage(props) {
     return(
         <>
-            <h2>Category</h2>
+            
+            <h2>Pick A Category To Start</h2>
             <Link to='/animals'>Animals</Link><br />
             <Link to='/weather'>Weather</Link><br />
             <Link to='/greeting'>Greeting</Link><br />

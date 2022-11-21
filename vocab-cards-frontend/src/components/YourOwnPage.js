@@ -1,6 +1,6 @@
 import React, { useEffect, useState} from "react"
 let baseUrl = 'http://localhost:8000/api/v1'
-const YourOwnPage = () =>{
+const YourOwnPage = (props) =>{
     const [yesCounter,setYesCounter] = useState(0)
     const [noCounter,setNoCounter] = useState(0)    
     const [englishToggle, setEnglishToggle] = useState(true)
@@ -23,9 +23,7 @@ const YourOwnPage = () =>{
         } else {
           return []
         }
-      }).then(data => {
-        
-        
+      }).then(data => {      
         handleYourOwnVocabs(data.data)
       })
       
@@ -46,6 +44,7 @@ const YourOwnPage = () =>{
     }    
     // console.log(YourOwnVocabs) 
     const deleteVocab = async(id) =>{
+        console.log(props.user)
         console.log('hit delete vocab')
         console.log(baseUrl + `/vocab/${id}`)
         fetch(baseUrl + `/vocab/${id}`, {
@@ -60,8 +59,9 @@ const YourOwnPage = () =>{
             return []
           }
           
-        })
+        })        
         window.location.reload()
+       
       }
     
     
@@ -90,7 +90,7 @@ const YourOwnPage = () =>{
         } else {
           return (
             <div key={vocab.id}>
-              <div>REMEMBER?</div>                               
+                                           
               <div>          
               {vocab.vocab_english}
               </div>
