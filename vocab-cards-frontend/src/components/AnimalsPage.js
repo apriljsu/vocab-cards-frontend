@@ -1,14 +1,10 @@
-import { useEffect, useState, useLayoutEffect} from "react"
+import React, { useEffect, useState} from "react"
 let baseUrl = 'http://localhost:8000/api/v1'
-const AnimalsPage = (props) =>{
-    // console.log(props)
-    // console.log(typeof(props.vocabs[0].english_to_chinese))
-    // console.log(props.vocabs[0].english_to_chinese)
-    const [englishToggle, setEnglishToggle] = useState ('True')
+const AnimalsPage = () =>{
+    const [yesCounter,setYesCounter] = useState(0)
+    const [noCounter,setNoCounter] = useState(0)    
+    const [englishToggle, setEnglishToggle] = useState(true)
     const [animalVocabs, setAnimalVocabs] = useState([])
-    // const [vocabs, setVocabs]= useState([])
-    // console.log(props.vocabs)
-    // console.log(props.vocabs.length)
 
     
     useEffect(()=>{
@@ -28,78 +24,71 @@ const AnimalsPage = (props) =>{
         }
       }).then(data => {
         
-        // setVocabs(data.data)
-        // console.log(vocabs)
+        
         handleAnimalVocabs(data.data)
       })
-      // async function fetchdata() {
-      // // await props.getVocabs()
-      // await console.log(props.vocabs)
-      // await console.log(props.vocabs.length)
-      // // await handleAnimalVocabs()      
-      // // await console.log('user effect')
-      // }
-      // fetchdata()
+      
     },[])
         
-    
     const handleAnimalVocabs = (vocabs) =>{
-      console.log(vocabs)
-      console.log('i am in animal kindom')
+      // console.log(vocabs)
+      // console.log('i am in animal kindom')
       let animalArray = []
-      for (let i = 0; i <vocabs.length; i++) { 
-        console.log(vocabs[i].category)
+      for (let i = 0; i <vocabs.length; i++) {      
         if(vocabs[i].category === 'animal'){
-          console.log('here')
+          // console.log('here')
          animalArray.push(vocabs[i])        
         }
       }
       setAnimalVocabs(animalArray)      
-    //  return animalVocabs
-    }
-
-    // console.log(props.vocabs)
-    // console.log(animalVocabs)
   
- 
+    }    
+    // console.log(animalVocabs)   
+
+    const startOver = () => {
+      setYesCounter(0)
+      setNoCounter(0)
+      setEnglishToggle(true)
+    }
     return(
       <>
       <h1>VOCAB CARDS</h1>
-      {animalVocabs.map((vocab) => {        
-        const handleLanguageChange = () =>{
-         setEnglishToggle('False')
-         vocab.english_to_chinese = englishToggle
+      {animalVocabs.map((vocab) => {   
+        if(englishToggle === true){
+          return (
+            <div key={vocab.id}>
+              <div>REMEMBER?</div>                               
+              <div>          
+              {vocab.vocab_english}
+              </div>            
+              <button onClick={() => setYesCounter(yesCounter+1)}>Yes</button>
+              <button onClick={() => setNoCounter(noCounter+1)}>No</button>                                                          
+            </div>
+          )
+        } else {
+          return (
+            <div key={vocab.id}>
+              <div>REMEMBER?</div>                               
+              <div>          
+              {vocab.vocab_english}
+              </div>
+              <div>          
+              {vocab.vocab_chinese}
+              </div>              
+              <button onClick={() => setYesCounter(yesCounter+1)}>Yes</button>
+              <button onClick={() => setNoCounter(noCounter+1)}>No</button>                                                                       
+            </div>
+          )
         }
-        // console.log (vocab.english_to_chinese)
-      
-       if(vocab.english_to_chinese === true){
-        return (
-          <div key={vocab.id}>
-            <div>REMEMBER?</div>                               
-            <div>          
-            {vocab.vocab_english}
-            </div>
-            <button onClick={handleLanguageChange}>Click Me to See the Answer</button>                                             
-          </div>
-        )
-       } else {
-        return(
-          <div key={vocab.id}>          
-            {vocab.vocab_chinese}
-            </div>
-        )
-       }
         
-        } )}
-      </>
-    )
-      
+      }         
+    )}
+    <button onClick={() => setEnglishToggle(false)}>Click Me to See the All Answers</button>
+    <button onClick={startOver}>Start Over</button>
+    <div>Number of Words Remembered : {yesCounter}</div>
+    <div>Number of Words Not Remembered : {noCounter}</div>
+    </> 
+  )      
 }
-
-
-
-        
-    
-          
 
 export default AnimalsPage;
