@@ -1,10 +1,10 @@
 import React, { useEffect, useState} from "react"
 let baseUrl = 'http://localhost:8000/api/v1'
-const AnimalsPage = () =>{
+const TransportPage = () =>{
     const [yesCounter,setYesCounter] = useState(0)
     const [noCounter,setNoCounter] = useState(0)    
     const [englishToggle, setEnglishToggle] = useState(true)
-    const [animalVocabs, setAnimalVocabs] = useState([])
+    const [transportVocabs, setTransportVocabs] = useState([])
 
     
     useEffect(()=>{
@@ -25,25 +25,25 @@ const AnimalsPage = () =>{
       }).then(data => {
         
         
-        handleAnimalVocabs(data.data)
+        handleTransportVocabs(data.data)
       })
       
     },[])
         
-    const handleAnimalVocabs = (vocabs) =>{
+    const handleTransportVocabs = (vocabs) =>{
       // console.log(vocabs)
-      // console.log('i am in animal kindom')
-      let animalArray = []
+      // console.log('i am in Transport kindom')
+      let transportArray = []
       for (let i = 0; i <vocabs.length; i++) {      
-        if(vocabs[i].category === 'animal'){
+        if(vocabs[i].category === 'transport'){
           // console.log('here')
-         animalArray.push(vocabs[i])        
+         transportArray.push(vocabs[i])        
         }
       }
-      setAnimalVocabs(animalArray)      
+      setTransportVocabs(transportArray)      
   
     }    
-    // console.log(animalVocabs)   
+    // console.log(TransportVocabs)   
 
     const startOver = () => {
       setYesCounter(0)
@@ -53,7 +53,7 @@ const AnimalsPage = () =>{
     return(
       <>
       <h1>VOCAB CARDS</h1>
-      {animalVocabs.map((vocab) => {   
+      {transportVocabs.map((vocab) => {   
         if(englishToggle === true){
           return (
             <div key={vocab.id}>
@@ -74,8 +74,8 @@ const AnimalsPage = () =>{
               </div>
               <div>          
               {vocab.vocab_chinese}
-              </div>             
-                                                                                     
+              </div>              
+                                                                                    
             </div>
           )
         }
@@ -90,4 +90,4 @@ const AnimalsPage = () =>{
   )      
 }
 
-export default AnimalsPage;
+export default TransportPage;

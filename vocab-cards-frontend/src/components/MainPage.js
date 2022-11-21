@@ -6,7 +6,10 @@ export default function MainPage() {
         <>
             <h2>Category</h2>
             <Link to='/animals'>Animals</Link><br />
-            <Link to='/greetings'>Greetings</Link>
+            <Link to='/weather'>Weather</Link><br />
+            <Link to='/greeting'>Greeting</Link><br />
+            <Link to='/transport'>Transport</Link><br />
+            <Link to='/yourown'>Your Own Cards</Link><br />
        </>
 
     )

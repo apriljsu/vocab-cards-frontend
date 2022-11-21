@@ -3,6 +3,10 @@ import './App.css';
 import React, {useState, useEffect} from 'react';
 import {Routes, Route, useNavigate, Navigate} from 'react-router-dom';
 import AnimalsPage from './components/AnimalsPage';
+import WeatherPage from './components/WeatherPage';
+import GreetingPage from './components/GreetingPage';
+import TransportPage from './components/TransportPage';
+import YourOwnPage from './components/YourOwnPage';
 import LoginUser from './components/LoginUser';
 import RegisterUser from './components/RegisterUser';
 import NewVocabForm from './components/NewVocabForm';
@@ -16,6 +20,7 @@ let baseUrl = 'http://localhost:8000/api/v1'
 function App() {
   const [vocabs, setVocabs]= useState([])
   const navigate = useNavigate()
+  const [user, setUser] = useState()
   
   const getVocabs = () =>{
     fetch(baseUrl + '/vocab/', {
@@ -52,7 +57,7 @@ function App() {
       const response = await fetch(url, {
         method: 'POST',
         body: JSON.stringify(loginBody),
-        credentials: 'same-origin',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json'
         }
@@ -60,6 +65,7 @@ function App() {
       console.log(response)
       console.log('BODY:', response.body)
       if(response.status === 200) {
+        setUser(e.target.email.value)
         getVocabs()
         navigate('main')
       }
@@ -69,6 +75,13 @@ function App() {
     }
   }
 
+  const logout = () => {
+    console.log('successfully logged out')
+    localStorage.clear()
+    fetch(baseUrl + "/user/logout")
+    setUser(null);
+    navigate("/")
+}
   const register = async(e) => {
     console.log('loginuser')
     console.log(e.target.email.value)
@@ -102,25 +115,7 @@ function App() {
     }
   }
 
-  const deleteVocab = async(id) =>{
-    console.log('hit delete vocab')
-    fetch(baseUrl + `/vocab/${id}`, {
-      credentials: 'include',
-      method: 'DELETE',
-      headers: {'Content-Type': 'application/json'}
-    })
-    .then(res => {
-      if(res.status === 200) {
-        return res.json()
-      } else {
-        return []
-      }
-    })
-    .then (data =>{
-      getVocabs()
-    })
-  }
-
+  
   // useEffect(()=>{
   //   getVocabs()
   //   console.log(vocabs)
@@ -128,9 +123,13 @@ function App() {
 
   return (
   <>
-    <NavBar />
+    <NavBar logout={logout} user={user}/>
     <Routes>
       <Route path='/animals' element={<AnimalsPage vocabs={vocabs} />} />
+      <Route path='/weather' element={<WeatherPage vocabs={vocabs} />} />
+      <Route path='/greeting' element={<GreetingPage vocabs={vocabs} />} />
+      <Route path='/transport' element={<TransportPage vocabs={vocabs} />} />
+      <Route path='/yourown' element={<YourOwnPage vocabs={vocabs} />} />
       <Route path='/main' element={<MainPage />} />
       <Route path='/login' element={<LoginUser loginUser={loginUser} />} />
       <Route path='/register' element={<RegisterUser register={register} />} />

@@ -1,10 +1,10 @@
 import React, { useEffect, useState} from "react"
 let baseUrl = 'http://localhost:8000/api/v1'
-const AnimalsPage = () =>{
+const WeatherPage = () =>{
     const [yesCounter,setYesCounter] = useState(0)
     const [noCounter,setNoCounter] = useState(0)    
     const [englishToggle, setEnglishToggle] = useState(true)
-    const [animalVocabs, setAnimalVocabs] = useState([])
+    const [weatherVocabs, setWeatherVocabs] = useState([])
 
     
     useEffect(()=>{
@@ -25,25 +25,25 @@ const AnimalsPage = () =>{
       }).then(data => {
         
         
-        handleAnimalVocabs(data.data)
+        handleWeatherVocabs(data.data)
       })
       
     },[])
         
-    const handleAnimalVocabs = (vocabs) =>{
+    const handleWeatherVocabs = (vocabs) =>{
       // console.log(vocabs)
-      // console.log('i am in animal kindom')
-      let animalArray = []
+      // console.log('i am in weather kindom')
+      let weatherArray = []
       for (let i = 0; i <vocabs.length; i++) {      
-        if(vocabs[i].category === 'animal'){
+        if(vocabs[i].category === 'weather'){
           // console.log('here')
-         animalArray.push(vocabs[i])        
+         weatherArray.push(vocabs[i])        
         }
       }
-      setAnimalVocabs(animalArray)      
+      setWeatherVocabs(weatherArray)      
   
     }    
-    // console.log(animalVocabs)   
+    // console.log(weatherVocabs)   
 
     const startOver = () => {
       setYesCounter(0)
@@ -53,7 +53,7 @@ const AnimalsPage = () =>{
     return(
       <>
       <h1>VOCAB CARDS</h1>
-      {animalVocabs.map((vocab) => {   
+      {weatherVocabs.map((vocab) => {   
         if(englishToggle === true){
           return (
             <div key={vocab.id}>
@@ -74,7 +74,7 @@ const AnimalsPage = () =>{
               </div>
               <div>          
               {vocab.vocab_chinese}
-              </div>             
+              </div>              
                                                                                      
             </div>
           )
@@ -90,4 +90,4 @@ const AnimalsPage = () =>{
   )      
 }
 
-export default AnimalsPage;
+export default WeatherPage;

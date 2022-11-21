@@ -50,7 +50,8 @@ const NewVocabForm = (props) =>{
                 props.getVocabs()
                                            
               })
-                     
+            
+      alert('You have successfully added a new card!')         
     }
 
     return(

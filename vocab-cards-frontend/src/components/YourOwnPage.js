@@ -1,10 +1,11 @@
 import React, { useEffect, useState} from "react"
 let baseUrl = 'http://localhost:8000/api/v1'
-const AnimalsPage = () =>{
+const YourOwnPage = () =>{
     const [yesCounter,setYesCounter] = useState(0)
     const [noCounter,setNoCounter] = useState(0)    
     const [englishToggle, setEnglishToggle] = useState(true)
-    const [animalVocabs, setAnimalVocabs] = useState([])
+    const [yourOwnVocabs, setYourOwnVocabs] = useState([])
+
 
     
     useEffect(()=>{
@@ -25,26 +26,45 @@ const AnimalsPage = () =>{
       }).then(data => {
         
         
-        handleAnimalVocabs(data.data)
+        handleYourOwnVocabs(data.data)
       })
       
     },[])
         
-    const handleAnimalVocabs = (vocabs) =>{
+    const handleYourOwnVocabs = (vocabs) =>{
       // console.log(vocabs)
-      // console.log('i am in animal kindom')
-      let animalArray = []
+      // console.log('i am in YourOwn kindom')
+      let yourOwnArray = []
       for (let i = 0; i <vocabs.length; i++) {      
-        if(vocabs[i].category === 'animal'){
+        if(vocabs[i].category === 'yourown'){
           // console.log('here')
-         animalArray.push(vocabs[i])        
+         yourOwnArray.push(vocabs[i])        
         }
       }
-      setAnimalVocabs(animalArray)      
-  
+            
+      setYourOwnVocabs(yourOwnArray)
     }    
-    // console.log(animalVocabs)   
-
+    // console.log(YourOwnVocabs) 
+    const deleteVocab = async(id) =>{
+        console.log('hit delete vocab')
+        console.log(baseUrl + `/vocab/${id}`)
+        fetch(baseUrl + `/vocab/${id}`, {
+          credentials: 'include',
+          method: 'DELETE',
+          headers: {'Content-Type': 'application/json'}
+        })
+        .then(res => {
+          if(res.status === 200) {
+            return res.json()
+          } else {
+            return []
+          }
+          
+        })
+        window.location.reload()
+      }
+    
+    
     const startOver = () => {
       setYesCounter(0)
       setNoCounter(0)
@@ -53,7 +73,7 @@ const AnimalsPage = () =>{
     return(
       <>
       <h1>VOCAB CARDS</h1>
-      {animalVocabs.map((vocab) => {   
+      {yourOwnVocabs.map((vocab) => {   
         if(englishToggle === true){
           return (
             <div key={vocab.id}>
@@ -62,7 +82,9 @@ const AnimalsPage = () =>{
               {vocab.vocab_english}
               </div>            
               <button onClick={() => setYesCounter(yesCounter+1)}>Yes</button>
-              <button onClick={() => setNoCounter(noCounter+1)}>No</button>                                                          
+              <button onClick={() => setNoCounter(noCounter+1)}>No</button>
+              <button onClick={()=>deleteVocab(vocab.id)}>Delete</button> 
+
             </div>
           )
         } else {
@@ -75,7 +97,8 @@ const AnimalsPage = () =>{
               <div>          
               {vocab.vocab_chinese}
               </div>             
-                                                                                     
+             
+                                                                                                
             </div>
           )
         }
@@ -90,4 +113,4 @@ const AnimalsPage = () =>{
   )      
 }
 
-export default AnimalsPage;
+export default YourOwnPage;
