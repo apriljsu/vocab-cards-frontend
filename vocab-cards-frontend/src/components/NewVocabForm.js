@@ -7,19 +7,18 @@ let baseUrl = 'http://localhost:8000/api/v1'
 const NewVocabForm = (props) =>{
     const [vocabChinese, setChinese] = useState('')
     const [vocabEnglish, setEnglish] = useState('')
-    const [category, setCategory] = useState('')
+    const [category, setCategory] = useState('yourown')
     const [english_to_chinese, setEnglishToChinese] = useState('True')
    
 
-    const handleChineseChange = (e) =>{
-        console.log(e.target.value)
+    const handleChineseChange = (e) =>{                
         setChinese(e.target.value)
     }
     const handleEnglishChange = (e) =>{
         setEnglish(e.target.value)
     }
     const handleCategoryChange = (e) =>{
-        setCategory(e.target.value)
+        setCategory(e.target.value)        
     }
   
     
@@ -53,16 +52,30 @@ const NewVocabForm = (props) =>{
             
       alert('You have successfully added a new card!')         
     }
-
-    return(
+    if(props.user === 'admin@email.com') {
+      return(
        
         <form onSubmit={handleSubmit}>
             <input type = 'text' id='vocabChinese' onChange={handleChineseChange} value={vocabChinese} placeholder='Chinese Vocab'></input>
-            <input type = 'text' id='vocabEnglish' onChange={handleEnglishChange} value={vocabEnglish} placeholder='English Vocab'></input>
-            <input type = 'text' id='category' onChange={handleCategoryChange} value={category} placeholder='Category'></input>            
+            <input type = 'text' id='vocabEnglish' onChange={handleEnglishChange} value={vocabEnglish} placeholder='English Vocab'></input><br />            
+            <input type = 'text' id='category' onChange={handleCategoryChange} placeholder='Category'></input>             
+
             <button type = 'submit' >Add New Vocab Card</button>    
         </form>
     )
+    }else {
+      return(
+       
+        <form onSubmit={handleSubmit}>
+            <input type = 'text' id='vocabChinese' onChange={handleChineseChange} value={vocabChinese} placeholder='Chinese Vocab'></input>
+            <input type = 'text' id='vocabEnglish' onChange={handleEnglishChange} value={vocabEnglish} placeholder='English Vocab'></input>          
+                      
+
+            <button type = 'submit' >Add New Vocab Card</button>    
+        </form>
+    )
+    }
+    
 
 }
 

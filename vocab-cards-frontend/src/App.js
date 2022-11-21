@@ -133,7 +133,7 @@ function App() {
       <Route path='/main' element={<MainPage />} />
       <Route path='/login' element={<LoginUser loginUser={loginUser} />} />
       <Route path='/register' element={<RegisterUser register={register} />} />
-      <Route path='/new' element={<NewVocabForm getVocabs={getVocabs}/>} />
+      <Route path='/new' element={<NewVocabForm getVocabs={getVocabs} user={user}/>} />
       <Route path='/' element={<HomePage />} />
 
     </Routes>
