@@ -1,0 +1,47 @@
+body{
+  background-image:url('./assets/star.jpeg');
+}
+.brand {
+font-family: 'Sono', sans-serif;
+color: rgb(88,204,2);
+font-size:40px;
+}
+
+#homepage {
+  
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 600px;
+}
+
+#homepageheader {
+  font-family: 'Sono', sans-serif;
+  padding-top: 70px;;
+  padding-bottom: 90px;
+  font-size:40px;
+}
+#register, #login {
+  padding:25px;
+  border: rgb(4,44,96) solid 2px;
+  border-radius: 25px;
+  box-shadow: 5px 10px #888888;
+  margin-left: 700px;
+  margin-right:700px;
+  margin-top:30px;  
+}
+link {
+  text-decoration: none;
+  color:white;
+}
+.fa {
+  /* border:2px solid; */
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+footer {
+  margin-top: 300px;
+}
