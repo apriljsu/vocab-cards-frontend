@@ -1,5 +1,10 @@
 import React, { useEffect, useState} from "react"
-let baseUrl = 'http://localhost:8000/api/v1'
+let baseUrl = ''
+if(process.env.NODE_ENV === 'development'){
+  baseUrl = 'http://localhost:8000/api/v1'
+}else {
+  baseUrl = process.env.REACT_APP_BACKEND_URL
+}
 const GreetingPage = () =>{
     const [yesCounter,setYesCounter] = useState(0)
     const [noCounter,setNoCounter] = useState(0)    

@@ -14,7 +14,12 @@ import HomePage from './components/HomePage';
 import NavBar from './components/NavBar';
 import MainPage from './components/MainPage';
 
-let baseUrl = 'http://localhost:8000/api/v1'
+let baseUrl = ''
+if(process.env.NODE_ENV === 'development'){
+  baseUrl = 'http://localhost:8000/api/v1'
+}else {
+  baseUrl = process.env.REACT_APP_BACKEND_URL
+}
 
 
 function App() {

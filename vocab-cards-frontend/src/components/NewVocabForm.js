@@ -2,7 +2,12 @@ import React, {useState} from 'react';
 import { Navigate } from 'react-router-dom';
 
 
-let baseUrl = 'http://localhost:8000/api/v1'
+let baseUrl = ''
+if(process.env.NODE_ENV === 'development'){
+  baseUrl = 'http://localhost:8000/api/v1'
+}else {
+  baseUrl = process.env.REACT_APP_BACKEND_URL
+}
 
 const NewVocabForm = (props) =>{
     const [vocabChinese, setChinese] = useState('')
