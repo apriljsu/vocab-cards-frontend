@@ -89,6 +89,7 @@ function App() {
     setUser(null);
     navigate("/")
 }
+
   const register = async(e) => {
     console.log('loginuser')
     console.log(e.target.email.value)

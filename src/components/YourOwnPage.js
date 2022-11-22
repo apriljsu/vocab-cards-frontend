@@ -25,6 +25,7 @@ const YourOwnPage = (props) =>{
         // console.log('hit vocab')
         if(res.status === 200){
           return res.json()
+          
         } else {
           return []
         }
@@ -49,24 +50,28 @@ const YourOwnPage = (props) =>{
     }    
     // console.log(YourOwnVocabs) 
     const deleteVocab = async(id) =>{
-        console.log(props.user)
-        console.log('hit delete vocab')
-        console.log(baseUrl + `/vocab/${id}`)
+        // console.log(props.user)
+        // console.log('hit delete vocab')
+        // console.log(baseUrl + `/vocab/${id}`)
         fetch(baseUrl + `/vocab/${id}`, {
           credentials: 'include',
           method: 'DELETE',
           headers: {'Content-Type': 'application/json'}
         })
         .then(res => {
-          if(res.status === 200) {
-            return res.json()
-          } else {
-            return []
-          }
+          console.log('hit delete 2')
+          const copyYourOwnArray =[...yourOwnVocabs]
+            const findIndex = yourOwnVocabs.findIndex(yourOwnVocabs => yourOwnVocabs.id === id)
+            copyYourOwnArray.splice(findIndex,1)
+            setYourOwnVocabs(copyYourOwnArray)
+          // if(res.status === 200) {
+          //   return res.json()
+            
+          // } else {
+          //   return []
+          // }
           
-        })        
-        // window.location.reload()
-       
+        })                     
       }
     
     
@@ -76,45 +81,48 @@ const YourOwnPage = (props) =>{
       setEnglishToggle(true)
     }
     return(
-      <>
-     
-      {yourOwnVocabs.map((vocab) => {   
-        if(englishToggle === true){
-          return (
-            <div key={vocab.id}>
-              <div>REMEMBER?</div>                               
-              <div>          
-              {vocab.vocab_english}
-              </div>            
-              <button onClick={() => setYesCounter(yesCounter+1)}>Yes</button>
-              <button onClick={() => setNoCounter(noCounter+1)}>No</button>
-              <button onClick={()=>deleteVocab(vocab.id)}>Delete</button> 
+    <div>
+        <div id='vocabsContainer'>
+           {yourOwnVocabs.map((vocab) => {   
+              if(englishToggle === true){
+                return (
+                <div key={vocab.id} className='vocabCard'>
+                  <div>REMEMBER?</div>                               
+                  <div class='word'>          
+                  {vocab.vocab_english}
+                  </div>            
+                  <button onClick={() => setYesCounter(yesCounter+1)}>Yes</button>
+                  <button onClick={() => setNoCounter(noCounter+1)}>No</button>
+                  <button onClick={()=>deleteVocab(vocab.id)}>Delete</button> 
 
-            </div>
-          )
-        } else {
-          return (
-            <div key={vocab.id}>
-                                           
-              <div>          
-              {vocab.vocab_english}
-              </div>
-              <div>          
-              {vocab.vocab_chinese}
-              </div>             
-             
-                                                                                                
-            </div>
-          )
-        }
-        
-      }         
-    )}
-    <button onClick={() => setEnglishToggle(false)}>Click Me to See the All Answers</button>
-    <button onClick={startOver}>Start Over</button>
-    <div>Number of Words Remembered : {yesCounter}</div>
-    <div>Number of Words Not Remembered : {noCounter}</div>
-    </> 
+                  </div>
+                  )
+              } else {
+                return (
+                  <div key={vocab.id}>
+                                                
+                    <div class='word'>          
+                    {vocab.vocab_english}
+                    </div>
+                    <div class='word'>          
+                    {vocab.vocab_chinese}
+                    </div>             
+                  
+                                                                                                      
+                  </div>
+                )
+              }
+              
+              }         
+              )}
+          </div>
+          <div id='vocabsContainerBottom'>
+              <button onClick={() => setEnglishToggle(false)}>Click Me to See the All Answers</button>
+              <button onClick={startOver}>Start Over</button>
+              <div class='result'>Number of Words Remembered : {yesCounter}</div>
+              <div class='result'>Number of Words Not Remembered : {noCounter}</div>
+          </div>
+    </div> 
   )      
 }
 

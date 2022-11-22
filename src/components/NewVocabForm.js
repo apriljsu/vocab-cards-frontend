@@ -57,26 +57,27 @@ const NewVocabForm = (props) =>{
             
       alert('You have successfully added a new card!')         
     }
+
     if(props.user === 'admin@email.com') {
-      return(
-       
-        <form onSubmit={handleSubmit}>
-            <input type = 'text' id='vocabChinese' onChange={handleChineseChange} value={vocabChinese} placeholder='Chinese Vocab'></input>
-            <input type = 'text' id='vocabEnglish' onChange={handleEnglishChange} value={vocabEnglish} placeholder='English Vocab'></input><br />            
-            <input type = 'text' id='category' onChange={handleCategoryChange} placeholder='Category'></input>             
+      return(       
+        <form className='mb-3' id='newCard' onSubmit={handleSubmit}>
+            <input className='form-control newCardFormInput' type = 'text' id='vocabChinese' onChange={handleChineseChange} value={vocabChinese} placeholder='Chinese Vocab'></input>
+            <input className='form-control newCardFormInput' type = 'text' id='vocabEnglish' onChange={handleEnglishChange} value={vocabEnglish} placeholder='English Vocab'></input><br />            
+            <input className='form-control newCardFormInput' type = 'text' id='category' onChange={handleCategoryChange} placeholder='Category'></input>             
 
             <button type = 'submit' >Add New Vocab Card</button>    
         </form>
+       
     )
     }else {
       return(
        
-        <form onSubmit={handleSubmit}>
-            <input type = 'text' id='vocabChinese' onChange={handleChineseChange} value={vocabChinese} placeholder='Chinese Vocab'></input>
-            <input type = 'text' id='vocabEnglish' onChange={handleEnglishChange} value={vocabEnglish} placeholder='English Vocab'></input>          
+        <form className='mb-3' id='newCard' onSubmit={handleSubmit}>
+            <input className='form-control' type = 'text' id='vocabChinese' onChange={handleChineseChange} value={vocabChinese} placeholder='Chinese Vocab'></input>
+            <input className='form-control' type = 'text' id='vocabEnglish' onChange={handleEnglishChange} value={vocabEnglish} placeholder='English Vocab'></input>          
                       
 
-            <button type = 'submit' >Add New Vocab Card</button>    
+            <button className='form-control' type = 'submit' >Add New Vocab Card</button>    
         </form>
     )
     }

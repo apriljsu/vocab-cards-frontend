@@ -56,42 +56,45 @@ const WeatherPage = () =>{
       setEnglishToggle(true)
     }
     return(
-      <>
-      
-      {weatherVocabs.map((vocab) => {   
-        if(englishToggle === true){
-          return (
-            <div key={vocab.id}>
-              <div>REMEMBER?</div>                               
-              <div>          
-              {vocab.vocab_english}
-              </div>            
-              <button onClick={() => setYesCounter(yesCounter+1)}>Yes</button>
-              <button onClick={() => setNoCounter(noCounter+1)}>No</button>                                                          
-            </div>
-          )
-        } else {
-          return (
-            <div key={vocab.id}>
-                                           
-              <div>          
-              {vocab.vocab_english}
-              </div>
-              <div>          
-              {vocab.vocab_chinese}
-              </div>              
-                                                                                     
-            </div>
-          )
-        }
-        
-      }         
-    )}
-    <button onClick={() => setEnglishToggle(false)}>Click Me to See the All Answers</button>
-    <button onClick={startOver}>Start Over</button>
-    <div>Number of Words Remembered : {yesCounter}</div>
-    <div>Number of Words Not Remembered : {noCounter}</div>
-    </> 
+      <div>
+        <div id='vocabsContainer'>      
+          {weatherVocabs.map((vocab) => {   
+            if(englishToggle === true){
+              return (
+                <div key={vocab.id} className='vocabCard'>
+                  <div>REMEMBER?</div>                               
+                  <div class='word'>          
+                  {vocab.vocab_english}
+                  </div>            
+                  <button onClick={() => setYesCounter(yesCounter+1)}>Yes</button>
+                  <button onClick={() => setNoCounter(noCounter+1)}>No</button>                                                          
+                </div>
+              )
+            } else {
+              return (
+                <div key={vocab.id} className='vocabCard'>
+                                              
+                  <div class='word'>          
+                  {vocab.vocab_english}
+                  </div>
+                  <div class='word'>          
+                  {vocab.vocab_chinese}
+                  </div>              
+                                                                                        
+                </div>
+              )
+            }
+            
+          }         
+        )}
+      </div>
+      <div id='vocabsContainerBottom'>
+        <button onClick={() => setEnglishToggle(false)}>Click Me to See the All Answers</button>
+        <button onClick={startOver}>Start Over</button>
+        <div class='result'>Number of Words Remembered : {yesCounter}</div>
+        <div class='result'>Number of Words Not Remembered : {noCounter}</div>
+      </div>
+    </div> 
   )      
 }
 
