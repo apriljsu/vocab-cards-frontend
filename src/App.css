@@ -51,7 +51,7 @@ footer {
   margin-top: 300px;
 }
 
-#loginform, #register-form {
+#loginform, #register-form, #newCard {
   padding-top: 100px;
   width: 20%;
   margin: auto;
@@ -123,6 +123,3 @@ button {
   font-size: 20px;
 }
 
-#newCard {
-  margin: 100px;
-}
