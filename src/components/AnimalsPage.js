@@ -56,12 +56,12 @@ const AnimalsPage = () =>{
       setEnglishToggle(true)
     }
     return(
-      <>
-      <h1>VOCAB CARDS</h1>
+      <div>
+      
       {animalVocabs.map((vocab) => {   
         if(englishToggle === true){
           return (
-            <div key={vocab.id}>
+            <div key={vocab.id} className='vocabCard'>
               <div>REMEMBER?</div>                               
               <div>          
               {vocab.vocab_english}
@@ -72,8 +72,7 @@ const AnimalsPage = () =>{
           )
         } else {
           return (
-            <div key={vocab.id}>
-                                            
+            <div key={vocab.id} className='vocabCard'>                                            
               <div>          
               {vocab.vocab_english}
               </div>
@@ -91,7 +90,7 @@ const AnimalsPage = () =>{
     <button onClick={startOver}>Start Over</button>
     <div>Number of Words Remembered : {yesCounter}</div>
     <div>Number of Words Not Remembered : {noCounter}</div>
-    </> 
+    </div> 
   )      
 }
 

@@ -57,7 +57,7 @@ const GreetingPage = () =>{
     }
     return(
       <>
-      <h1>VOCAB CARDS</h1>
+      
       {greetingVocabs.map((vocab) => {   
         if(englishToggle === true){
           return (

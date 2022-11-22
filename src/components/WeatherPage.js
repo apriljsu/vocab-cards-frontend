@@ -57,7 +57,7 @@ const WeatherPage = () =>{
     }
     return(
       <>
-      <h1>VOCAB CARDS</h1>
+      
       {weatherVocabs.map((vocab) => {   
         if(englishToggle === true){
           return (

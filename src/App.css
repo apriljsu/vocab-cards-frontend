@@ -5,6 +5,9 @@ body{
 font-family: 'Sono', sans-serif;
 color: rgb(88,204,2);
 font-size:40px;
+margin-right:100px;
+/* border:solid 2px black; */
+padding-right:1000px;
 }
 
 #homepage {
@@ -20,6 +23,7 @@ font-size:40px;
   padding-bottom: 90px;
   font-size:40px;
 }
+
 #register, #login {
   padding:25px;
   border: rgb(4,44,96) solid 2px;
@@ -27,9 +31,10 @@ font-size:40px;
   box-shadow: 5px 10px #888888;
   margin-left: 700px;
   margin-right:700px;
-  margin-top:30px;  
+  margin-top:30px;
+  background-color:  rgb(88,204,2);
 }
-link {
+Link {
   text-decoration: none;
   color:white;
 }
@@ -44,4 +49,43 @@ link {
 }
 footer {
   margin-top: 300px;
+}
+
+#loginform, #register-form {
+  padding-top: 100px;
+  width: 20%;
+  margin: auto;
+}
+
+#mainPageHeader {
+  text-align: center;
+  padding-top: 100px;
+  font-family: 'Sono', sans-serif;
+  padding-bottom: 100px;
+  font-size: 50px;
+}
+
+#containers {
+  display: flex;
+  /* border: solid 2px white; */
+  text-align: center;
+  justify-content: center;
+  width: 70%;
+  margin: auto;
+  /* flex-wrap: wrap;
+  flex-direction: row; */
+}
+
+.containerImg {
+  width: 300px;;
+  height: 200px;
+  margin: auto;
+}
+
+#container {
+  border: solid 2px red;
+}
+
+#vocabCard {
+  border: solid purple 2px;
 }

@@ -57,7 +57,7 @@ const TransportPage = () =>{
     }
     return(
       <>
-      <h1>VOCAB CARDS</h1>
+      
       {transportVocabs.map((vocab) => {   
         if(englishToggle === true){
           return (

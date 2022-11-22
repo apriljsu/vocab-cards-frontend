@@ -77,7 +77,7 @@ const YourOwnPage = (props) =>{
     }
     return(
       <>
-      <h1>VOCAB CARDS</h1>
+     
       {yourOwnVocabs.map((vocab) => {   
         if(englishToggle === true){
           return (

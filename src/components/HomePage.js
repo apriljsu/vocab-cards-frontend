@@ -3,7 +3,7 @@ import {NavLink, Link} from 'react-router-dom'
 const linkStyle = {
     margin: "1rem",
     textDecoration: "none",
-    color: 'rgb(4,44,96)',
+    color: 'rgb(4,44,96)',  
     
   };
   

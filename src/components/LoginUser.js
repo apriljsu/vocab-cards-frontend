@@ -1,12 +1,11 @@
 export default function LoginUser(props) {
     return(
-        <form onSubmit={props.loginUser}>
-            <strong>Login</strong><br/>
+        <form id='loginform' onSubmit={props.loginUser} className='mb-3'>           
             <label htmlFor="name">Email:</label>
-            <input type='text' id='email' name='email'/>
+            <input className='form-control' type='text' id='email' name='email'/>
             <label htmlFor="name">Password:</label>
-            <input type='text'  id='password' name='password'/>
-            <input type='submit' value='login'/>
+            <input className='form-control' type='text'  id='password' name='password'/><br />
+            <input className='form-control' type='submit' value='login'/>
         </form>
     )
 }
