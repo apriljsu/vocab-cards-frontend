@@ -65,7 +65,7 @@ const YourOwnPage = (props) =>{
           }
           
         })        
-        window.location.reload()
+        // window.location.reload()
        
       }
     
