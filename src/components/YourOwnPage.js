@@ -91,9 +91,9 @@ const YourOwnPage = (props) =>{
                   <div class='word'>          
                   {vocab.vocab_english}
                   </div>            
-                  <button onClick={() => setYesCounter(yesCounter+1)}>Yes</button>
-                  <button onClick={() => setNoCounter(noCounter+1)}>No</button>
-                  <button onClick={()=>deleteVocab(vocab.id)}>Delete</button> 
+                  <button class='cardButton' onClick={() => setYesCounter(yesCounter+1)}>Yes</button>
+                  <button class='cardButton' onClick={() => setNoCounter(noCounter+1)}>No</button>
+                  <button class='cardButton' onClick={()=>deleteVocab(vocab.id)}>Delete</button> 
 
                   </div>
                   )
@@ -117,8 +117,8 @@ const YourOwnPage = (props) =>{
               )}
           </div>
           <div id='vocabsContainerBottom'>
-              <button onClick={() => setEnglishToggle(false)}>Click Me to See the All Answers</button>
-              <button onClick={startOver}>Start Over</button>
+              <button class='cardButton' onClick={() => setEnglishToggle(false)}>Click Me to See the All Answers</button>
+              <button class='cardButton' onClick={startOver}>Start Over</button>
               <div class='result'>Number of Words Remembered : {yesCounter}</div>
               <div class='result'>Number of Words Not Remembered : {noCounter}</div>
           </div>

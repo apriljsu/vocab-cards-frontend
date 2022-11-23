@@ -1,5 +1,6 @@
 body{
   background-image:url('./assets/star.jpeg');
+  font-family: 'Sono', sans-serif;
 }
 .brand {
 font-family: 'Sono', sans-serif;
@@ -51,10 +52,22 @@ footer {
   margin-top: 300px;
 }
 
-#loginform, #register-form, #newCard {
+#loginform, #register-form, #newCard{
   padding-top: 100px;
   width: 20%;
   margin: auto;
+  font-family: 'Sono', sans-serif;
+}
+
+.newCardSubmit {
+  margin: auto;
+  width: 70%;
+  border-radius: 25px;
+}
+
+.newCardInput {
+  margin-bottom: 20px;
+  border-radius: 25px;
 }
 
 #mainPageHeader {
@@ -114,7 +127,7 @@ footer {
   text-align: center;
 }
 
-button {
+.newCardSubmit, .cardButton {
   margin: 20px;
   border-radius: 25px;
 }

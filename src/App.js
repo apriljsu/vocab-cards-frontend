@@ -87,6 +87,7 @@ function App() {
     localStorage.clear()
     fetch(baseUrl + "/user/logout")
     setUser(null);
+    setUserActive(false)
     navigate("/")
 }
 

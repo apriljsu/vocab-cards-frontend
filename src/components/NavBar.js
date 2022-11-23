@@ -21,7 +21,7 @@ export default function NavBar(props) {
                         
                           <li><NavLink className="dropdown-item" to="main" >MAIN</NavLink></li>
                           <li><NavLink className="dropdown-item" to="new" >CREATE A NEW CARD</NavLink></li>
-                          <li><button className="dropdown-item" onClick={props.logout}>Log Out</button></li>                      
+                          <li><button className="dropdown-item logoutButton" onClick={props.logout}>LOG OUT</button></li>                      
 
                         </ul>
                       </li>

@@ -65,7 +65,7 @@ const NewVocabForm = (props) =>{
             <input className='form-control newCardFormInput' type = 'text' id='vocabEnglish' onChange={handleEnglishChange} value={vocabEnglish} placeholder='English Vocab'></input><br />            
             <input className='form-control newCardFormInput' type = 'text' id='category' onChange={handleCategoryChange} placeholder='Category'></input>             
 
-            <button type = 'submit' >Add New Vocab Card</button>    
+            <button type = 'submit' className='form-control newCardSubmit' >Add New Vocab Card</button>    
         </form>
        
     )
@@ -73,11 +73,9 @@ const NewVocabForm = (props) =>{
       return(
        
         <form className='mb-3' id='newCard' onSubmit={handleSubmit}>
-            <input className='form-control' type = 'text' id='vocabChinese' onChange={handleChineseChange} value={vocabChinese} placeholder='Chinese Vocab'></input>
-            <input className='form-control' type = 'text' id='vocabEnglish' onChange={handleEnglishChange} value={vocabEnglish} placeholder='English Vocab'></input>          
-                      
-
-            <button className='form-control' type = 'submit' >Add New Vocab Card</button>    
+            <input className='form-control newCardInput' type = 'text' id='vocabChinese' onChange={handleChineseChange} value={vocabChinese} placeholder='Chinese Vocab'></input>
+            <input className='form-control newCardInput' type = 'text' id='vocabEnglish' onChange={handleEnglishChange} value={vocabEnglish} placeholder='English Vocab'></input>
+            <button className='form-control newCardSubmit' type = 'submit' >Add New Vocab Card</button>    
         </form>
     )
     }
