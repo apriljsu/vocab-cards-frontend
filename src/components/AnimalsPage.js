@@ -63,20 +63,20 @@ const AnimalsPage = () =>{
               return (
                 <div key={vocab.id} className='vocabCard'>
                   <div>REMEMBER?</div>                               
-                  <div class='word'>          
+                  <div className='word'>          
                   {vocab.vocab_english}
                   </div><br />            
-                  <button class='cardButton' onClick={() => setYesCounter(yesCounter+1)}>Yes</button>
-                  <button class='cardButton' onClick={() => setNoCounter(noCounter+1)}>No</button>                                                          
+                  <button className='cardButton' onClick={() => setYesCounter(yesCounter+1)}>Yes</button>
+                  <button className='cardButton' onClick={() => setNoCounter(noCounter+1)}>No</button>                                                          
                 </div>
               )
             } else {
               return (
                 <div key={vocab.id} className='vocabCard'>                                            
-                  <div class='word'>          
+                  <div className='word'>          
                   {vocab.vocab_english}
                   </div>
-                  <div class='word'>          
+                  <div className='word'>          
                   {vocab.vocab_chinese}
                   </div>             
                                                                                         
@@ -88,10 +88,10 @@ const AnimalsPage = () =>{
           )}
       </div>
       <div id='vocabsContainerBottom'>
-        <button class='cardButton' onClick={() => setEnglishToggle(false)}>Click Me to See the All Answers</button>
-        <button class='cardButton' onClick={startOver}>Start Over</button>
-        <div class='result'>Number of Words Remembered : {yesCounter}</div>
-        <div class='result'>Number of Words Not Remembered : {noCounter}</div>
+        <button className='cardButton' onClick={() => setEnglishToggle(false)}>Click Me to See the All Answers</button>
+        <button className='cardButton' onClick={startOver}>Start Over</button>
+        <div className='result'>Number of Words Remembered : {yesCounter}</div>
+        <div className='result'>Number of Words Not Remembered : {noCounter}</div>
       </div>
     </div> 
   )      
