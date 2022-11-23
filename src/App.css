@@ -52,21 +52,25 @@ footer {
   margin-top: 300px;
 }
 
-#loginform, #register-form, #newCard{
+#loginform, #register-form, #newCard, #updateVocab{
   padding-top: 100px;
   width: 20%;
   margin: auto;
   font-family: 'Sono', sans-serif;
 }
 
-.newCardSubmit {
+.newCardSubmit,.updateVocabSubmit {
   margin: auto;
   width: 70%;
   border-radius: 25px;
 }
 
-.newCardInput {
+.newCardInput,.updateVocabInput {
   margin-bottom: 20px;
+  border-radius: 25px;
+}
+.cardButton{
+  margin: 10px;
   border-radius: 25px;
 }
 
@@ -127,10 +131,7 @@ footer {
   text-align: center;
 }
 
-.newCardSubmit, .cardButton {
-  margin: 20px;
-  border-radius: 25px;
-}
+
 .result {
   font-family: 'Sono', sans-serif;
   font-size: 20px;

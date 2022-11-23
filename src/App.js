@@ -13,6 +13,7 @@ import NewVocabForm from './components/NewVocabForm';
 import HomePage from './components/HomePage';
 import NavBar from './components/NavBar';
 import MainPage from './components/MainPage';
+import UpdateCard from './components/UpdateCard'
 
 let baseUrl = ''
 if(process.env.NODE_ENV === 'development'){
@@ -124,6 +125,25 @@ function App() {
     }
   }
 
+  const updateVocab = (vocab) =>{
+    fetch(baseUrl+`/vocab/${vocab.id}`,{
+      
+      method: "PUT",
+      headers: {"Content-Type":"application/json"},
+      body:JSON.stringify({vocab_chinese:vocab.vocab_chinese,vocab_english:vocab.vocab_english})
+    })
+    .then(res => {
+      if(res.status === 200) {
+        return res.json()
+      } else {
+        return []
+      }
+    }).then(data => {   
+      getVocabs()
+      navigate('yourown')
+    })
+  }
+
   
   // useEffect(()=>{
   //   getVocabs()
@@ -144,6 +164,7 @@ function App() {
       <Route path='/register' element={<RegisterUser register={register} />} />
       <Route path='/new' element={<NewVocabForm getVocabs={getVocabs} user={user}/>} />
       <Route path='/' element={<HomePage />} />
+      <Route path='/vocabs/:id' element={<UpdateCard updateVocab ={updateVocab}/>} /> 
 
     </Routes>
   </>

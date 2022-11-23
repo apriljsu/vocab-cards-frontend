@@ -1,4 +1,6 @@
 import React, { useEffect, useState} from "react"
+import { useNavigate } from "react-router-dom"
+
 let baseUrl = ''
 if(process.env.NODE_ENV === 'development'){
   baseUrl = 'http://localhost:8000/api/v1'
@@ -11,7 +13,7 @@ const YourOwnPage = (props) =>{
     const [englishToggle, setEnglishToggle] = useState(true)
     const [yourOwnVocabs, setYourOwnVocabs] = useState([])
 
-
+    const navigate = useNavigate()
     
     useEffect(()=>{
       // console.log(props.vocabs)
@@ -94,7 +96,7 @@ const YourOwnPage = (props) =>{
                   <button class='cardButton' onClick={() => setYesCounter(yesCounter+1)}>Yes</button>
                   <button class='cardButton' onClick={() => setNoCounter(noCounter+1)}>No</button>
                   <button class='cardButton' onClick={()=>deleteVocab(vocab.id)}>Delete</button> 
-
+                  <button class='cardButton' onClick={()=> navigate(`/vocabs/${vocab.id}`)}>Update</button> 
                   </div>
                   )
               } else {
