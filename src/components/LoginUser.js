@@ -4,7 +4,7 @@ export default function LoginUser(props) {
             <label htmlFor="name">Email:</label>
             <input className='form-control' type='text' id='email' name='email'/>
             <label htmlFor="name">Password:</label>
-            <input className='form-control' type='text'  id='password' name='password'/><br />
+            <input className='form-control' type='password'  id='password' name='password'/><br />
             <input className='form-control' type='submit' value='login'/>
         </form>
     )
