@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+**Link to the app:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+https://vocab-cards-frontend.herokuapp.com/
 
-## Available Scripts
+**Description:
 
-In the project directory, you can run:
+This app is designed to help Chinese learners to master beginning level vocabularies through memorization and self-checking by viewing the vocab cards.
 
-### `npm start`
+**Technologies used:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Backend: postgresql, flask, python
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Frontend: react, javascript, node js, bootstrap, css
 
-### `npm test`
+**A list of installation steps for the app itself and any dependencies:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Backend:
+install all packages in this file: python3 -m pip3 install -r requirements.txt
 
-### `npm run build`
+Frontend:
+run below commands in the terminal:
+ `npm i` 
+ `npm i react-router-dom`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**User Story:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+as a user, I want to be able to register/login so I will only see the cards&card status for me
 
-### `npm run eject`
+as a user, I want to be able to delete or add new cards based on my current language skill
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+as a user, I want to be able to restore the card status just in case I want to review the cards multiple times
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Initial Wireframes:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+landing page
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![2022-11-01_20-13-23](https://user-images.githubusercontent.com/105821806/204661800-bd07e434-47fe-4bc6-9ec8-a3f9b2da87ab.png)
 
-## Learn More
+login/register
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![2022-11-01_20-22-07](https://user-images.githubusercontent.com/105821806/204661840-c9d3dd86-f829-4987-a13c-a953f2a8fe2f.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Main page once login
 
-### Code Splitting
+User can select any number (which indicates # of cards in the set) and click on 'Check', it will direct them to cards; Once you are done with a set of cards, the number will indicate how many of the cards you don't remember. Restore will erase your record.
+![2022-11-01_20-28-48](https://user-images.githubusercontent.com/105821806/204661878-7fcf8101-cc9e-41f3-a5fd-9166db35f77c.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Cards page: each card will be displayed and user will be asked if they remember them or not; they can also delete the card permanently if they think they already mastered the word
+![2022-11-01_20-34-44](https://user-images.githubusercontent.com/105821806/204661902-3270f579-0ee7-451b-9fd8-59304e88a1d1.png)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Add a new card:
+![2022-11-01_20-37-56](https://user-images.githubusercontent.com/105821806/204661923-ea6dacb1-a3f2-446c-8a3e-d8e469058018.png)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+**Data Model
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+User Model:
 
-### Deployment
+user_id: INTEGER PRIMARY KEY
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+email: VARCHAR
 
-### `npm run build` fails to minify
+password: VARCHAR
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+first_name: VARCHAR
+
+last_name: VARCHAR
+
+Vocabulary Model:
+
+vocab_id: INTEGER PRIMARY KEY
+
+vocab_chinese: VARCHAR
+
+vocab_english: VARCHAR
+
+category: VARCHAR
+
+
+
+**Future Improvements:
+
+include API connection and levels of difficulties. 
